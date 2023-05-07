@@ -2,12 +2,68 @@
 <html>
   <head>
     <title>My first website</title>
+    <style>
+      .modal-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #reply {
+        margin-bottom: 20px;
+      }
+      #text {
+        text-align: left !important;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello world!</h1>
     <p>Welcome to my first website.</p>
     <h2>Web Security</h2>
     <p id="web-security-question">How would you advise a potential client to secure his/her website from web security attacks? Note: the word count for your answer should not be greater than 250 words</p>
-    <p id="web-security-answer">[Answer here]</p>
-  </body>
-</html>
+    <button data-open-modal>See Answer</button>
+
+    <dialog data-modal>
+      <div class="modal-container">
+        <h1>Security</h1>
+        <div id="text">
+          <p> <strong>Securing</strong> a website involves implementing a series of best practices that help prevent common web security attacks. 
+            To begin with, ensuring that all software and applications used on the website, including the operating system, web server, and third-party software, are up-to-date, is crucial. 
+            This helps ensure that any security vulnerabilities are patched and up-to-date.
+          </p>
+          <p>
+            <strong>Another</strong> best practice is to use strong and complex passwords for all accounts used on the website, including login, database, FTP access, and other services. 
+            Password managers can be used to generate and manage strong passwords.
+          </p>
+          <p>
+            <strong>Implementing</strong> SSL/TLS encryption using HTTPS is also a critical security practice for websites. 
+            HTTPS helps protect sensitive data such as login credentials, credit card numbers, and other personal information by securing communications between the website and visitors.
+          </p>
+          <p>
+            <strong>A firewall</strong> can be implemented to help protect against common web attacks such as SQL injection, cross-site scripting, and other common exploits. 
+            Regular backups of website data should also be taken to prevent data loss in case of a breach.
+          </p>
+          <p>
+            <strong>Using security plugins</strong> like anti-virus and anti-malware can help protect against attacks, and educating yourself and staff on website security best practices, including how to identify and prevent attacks, is crucial.
+          </p>
+          <p>
+            <strong>Finally, hiring a professional</strong> website security company can be a wise choice to help secure the website and ensure it is protected against attacks. 
+            By implementing these best practices, a website can be secured against web security attacks, ensuring it is safe for visitors and protecting sensitive data.
+          </p>
+        </div>
+
+        <button data-close-modal>Close</button>
+      </div>
+    </dialog>
+
+    <script>
+      const openButton = document.querySelector("[data-open-modal]");
+      const closeButton = document.querySelector("[data-close-modal]");
+      const modal = document.querySelector("[data-modal]");
+      openButton.addEventListener("click", () => {
+        modal.showModal();
+      });
+      closeButton.addEventListener("click", () => {
+        modal.close();
+      });
+    </script>
